@@ -1,0 +1,100 @@
+package function;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Function {
+
+    public static void poisk(int[][] array)
+    {
+        int temp = 0;
+        int i = 0;
+        int j = 0;
+        int m = 0;
+        int n = 0;
+        int xi = 0;
+        int xj = 0;
+        boolean flag = false;
+        
+        while ((m < array.length) && (m < array.length))
+        {
+            temp = array[m][n];
+            i = m;
+            j = n;
+            while (i < array.length)
+                {  
+                if (j < array.length)
+                {
+                    j++;                
+                } 
+                if (j >= array.length)
+                {
+                    i++;
+                    j = 0;
+                }
+                if (i >= array.length)
+                {
+                    break;
+                }
+                if (array[i][j] == temp)
+                {
+                    flag = true;
+                    System.out.println("temp = " + temp + " m = " + (m+1) + " n = " + (n+1) +
+                            " i = " + (i+1) + " j = " + (j+1));
+                    break;
+                }
+                }
+            if (n < array.length)
+            {
+                n++;                
+            }
+            if (n >= array.length)
+            {
+                m++;
+                n = 0;
+            }    
+            if (m >= array.length)
+            {
+                break;
+            }
+            
+        }
+        if (flag)
+        {
+            System.out.println("Есть одинаковые элементы");
+        } else
+        {
+            System.out.println("Нет одинаковых элементов");
+        }
+    }
+    
+    public static void main(String[] args) {
+        
+        Scanner scan = new Scanner(System.in);
+        Random rnd = new Random();
+        
+        System.out.print("Enter n: ");
+        int n = scan.nextInt();
+        
+        int[][] matrix = new int[n][n];
+        
+        for (int i = 0; i < n; i++) 
+        {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = rnd.nextInt(100);
+            }
+        }
+
+        for (int i = 0; i < n; i++) 
+        {
+            for (int j = 0; j < n; j++) {
+                System.out.print(matrix[i][j] + " "); 
+            }
+            System.out.println("");
+        }
+        
+        poisk(matrix);
+        
+    }
+    
+}
